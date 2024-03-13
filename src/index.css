@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* some coustom css for my webpages */
+body {
+  max-width: 1280px;
+  margin: auto;
+}
