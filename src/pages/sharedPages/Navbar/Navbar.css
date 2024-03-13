@@ -1,0 +1,9 @@
+.navLink a.active {
+  border-bottom: 2px solid blue;
+  padding-bottom: 1px;
+}
+
+.navLink a:hover {
+  color: blue;
+  transition: all 0.2s;
+}

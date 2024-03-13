@@ -1,22 +1,31 @@
 import { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Authprovaider/Authprovaider';
-
+import './Navbar.css';
 const Navbar = () => {
+  const { logout, user } = useContext(AuthContext);
   const links = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="/istractors">Instractor</NavLink>
       </li>
+      <li>
+        <NavLink to="/classes">Classes</NavLink>
+      </li>
+      {user && (
+        <li>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
       <li>
         <NavLink to="/login">Login</NavLink>
       </li>
     </>
   );
-  const { logout, user } = useContext(AuthContext);
+
   const handlerLogout = () => {
     logout().then().catch();
   };
@@ -47,10 +56,15 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to="/" className="text-2xl font-bold">
+          Language Loom
+        </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+
+      <div
+        className={` hidden lg:flex ${user ? 'navbar-center' : 'navbar-end'}`}
+      >
+        <ul className=" navLink flex gap-10 px-1">{links}</ul>
       </div>
       {user && (
         <div className="navbar-end">
