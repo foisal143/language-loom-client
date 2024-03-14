@@ -1,0 +1,78 @@
+[
+  {
+    "id": "001",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPnE_fy9lLMRP5DLYLnGN0LRLzZOiEpMrU4g&usqp=CAU",
+    "classes_taken": 20,
+    "classes_names": [
+      "Yoga Basics",
+      "Pilates for Beginners",
+      "Strength Training"
+    ],
+    "student_count": 150
+  },
+  {
+    "id": "002",
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfE6i4PYDd5w4yKZ5t9xxJYaMSb9bZRYNhxQ&usqp=CAU",
+    "classes_taken": 15,
+    "classes_names": ["Cardio Kickboxing", "Zumba", "HIIT Workouts"],
+    "student_count": 120
+  },
+  {
+    "id": "003",
+    "name": "Michael Johnson",
+    "email": "michael.johnson@example.com",
+    "image": "https://media.licdn.com/dms/image/C5603AQGQNO9W-RPN5g/profile-displayphoto-shrink_800_800/0/1627660314037?e=2147483647&v=beta&t=NlDObBvxvC8I3KL9su6p0qSPHMn0Xmj5GTPTjyRk7kY",
+    "classes_taken": 25,
+    "classes_names": ["CrossFit", "Boot Camp", "Functional Training"],
+    "student_count": 180
+  },
+  {
+    "id": "004",
+    "name": "Emily Brown",
+    "email": "emily.brown@example.com",
+    "image": "https://static.wixstatic.com/media/3af5bb_362eaba20a584c0da024b0f63fdf98b3~mv2.jpg/v1/fill/w_392,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Emily%20Brown%201.jpg",
+    "classes_taken": 10,
+    "classes_names": ["Pilates", "Barre", "Bodyweight Exercises"],
+    "student_count": 100
+  },
+  {
+    "id": "005",
+    "name": "David Lee",
+    "email": "david.lee@example.com",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIjycZKGKIiwpuOrG9CbrmebXwnkMz9Ed7CA&usqp=CAU",
+    "classes_taken": 18,
+    "classes_names": ["Spinning", "TRX", "Boxing"],
+    "student_count": 130
+  },
+  {
+    "id": "006",
+    "name": "Sarah Adams",
+    "email": "sarah.adams@example.com",
+    "image": "https://media.licdn.com/dms/image/D4D03AQENk3g4wAAX4w/profile-displayphoto-shrink_800_800/0/1683990735497?e=2147483647&v=beta&t=xEiCZME2bbvruH9IdncTjz8XC9hPffu47jrXzwThaQM",
+    "classes_taken": 22,
+    "classes_names": ["Pilates", "Yoga", "Meditation"],
+    "student_count": 160
+  },
+  {
+    "id": "007",
+    "name": "Alex Johnson",
+    "email": "alex.johnson@example.com",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvXq3jhUHVBC55u1LldEAHNfYUzukahbyQlwV3mN-In-DZRiR8KEd9wBhZWIM3fyCGAOU&usqp=CAU",
+    "classes_taken": 30,
+    "classes_names": ["HIIT", "Strength Training", "Cardio"],
+    "student_count": 200
+  },
+  {
+    "id": "008",
+    "name": "Emma Wilson",
+    "email": "emma.wilson@example.com",
+    "image": "https://www.nottingham.ac.uk/Research/Groups/cebhc/Images/Staff/Emma-Wilson-profile-pic.jpg",
+    "classes_taken": 12,
+    "classes_names": ["Yoga", "Pilates", "Barre"],
+    "student_count": 110
+  }
+]

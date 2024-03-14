@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Emily Chen",
+    "image": "https://career.ucsb.edu/sites/default/files/images/people/Emily_Headshot%20Final.jpg",
+    "details": "Student at UCLA, studying Linguistics",
+    "testimonial": "I've tried numerous language learning platforms, but none have matched the effectiveness and convenience of this website. The interactive lessons and personalized feedback have significantly improved my Spanish skills. Highly recommended!"
+  },
+  {
+    "name": "Ahmed Khan",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_XsBXmN3En8ZkAzpTIcay5PUGWrhy4ihuWA&usqp=CAU",
+    "details": "Engineering Student at University of Toronto",
+    "testimonial": "As an engineering student with a busy schedule, finding time to learn a new language seemed impossible. However, with this website, I can squeeze in quick lessons during breaks. The gamified approach keeps me motivated, and I've made remarkable progress in French!"
+  },
+  {
+    "name": "Sofia Rodriguez",
+    "image": "https://i0.wp.com/www.additudemag.com/wp-content/uploads/2019/06/EChen-Headshot-2018.jpg?w=300&crop=0%2C0px%2C100%2C300px&ssl=1",
+    "details": "High School Student, Madrid, Spain",
+    "testimonial": "I've always struggled with English, but this website has made learning fun and engaging. The videos and interactive exercises make concepts easy to understand, and the ability to connect with native speakers for conversation practice has boosted my confidence immensely."
+  },
+  {
+    "name": "Lei Wang",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl5Fb6iONuaB_FAnG6buWHR59_DMoJsZ-1ew&usqp=CAU",
+    "details": "Graduate Student, Beijing, China",
+    "testimonial": "Being from China, I wanted to enhance my English proficiency for academic and career purposes. This website's structured curriculum and intuitive interface have been instrumental in my language journey. I've even recommended it to my classmates!"
+  },
+  {
+    "name": "Alessia Ferrari",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgQBmpFgTzOrCrBMnsclx3uUokZsEf5h5gGg&usqp=CAU",
+    "details": "Freelance Graphic Designer, Milan, Italy",
+    "testimonial": "Learning German has always been a dream of mine, and this website has turned that dream into a reality. The bite-sized lessons fit perfectly into my busy schedule, and the cultural insights provided alongside language instruction have deepened my appreciation for the language."
+  }
+]

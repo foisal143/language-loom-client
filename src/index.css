@@ -7,3 +7,7 @@ body {
   max-width: 1280px;
   margin: auto;
 }
+
+.coustom-btn {
+  @apply transition-all px-8 py-2 bg-gradient-to-r to-blue-500 from-blue-800 text-white hover:from-blue-500 hover:to-blue-800 duration-200 rounded-md;
+}

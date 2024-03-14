@@ -1,0 +1,92 @@
+[
+  {
+    "_id": 1,
+    "image": "https://m.media-amazon.com/images/I/51v2KjKAaKS._AC_UF894,1000_QL80_.jpg",
+    "name": "Spanish 101",
+    "instructorName": "Maria Hernandez",
+    "availableSeats": 20,
+    "price": 190,
+    "isPopular": true
+  },
+  {
+    "_id": 2,
+    "image": "https://hyperlanguages.com/wp-content/uploads/2022/11/French-Language-1-1.png",
+    "name": "French Beginners",
+    "instructorName": "Jean-Luc Dubois",
+    "availableSeats": 15,
+    "price": 170,
+    "isPopular": true
+  },
+  {
+    "_id": 3,
+    "image": "https://www.fesgiabroad.com/wp-content/uploads/2022/12/German-Classes.jpg",
+    "name": "German Intensive",
+    "instructorName": "Klaus Müller",
+    "availableSeats": 10,
+    "price": 130,
+    "isPopular": false
+  },
+  {
+    "_id": 4,
+    "image": "https://www.italianvirtualschool.it/wp-content/uploads/2020/09/New-Conversation.png",
+    "name": "Italian Conversational",
+    "instructorName": "Sofia Rossi",
+    "availableSeats": 12,
+    "price": 180,
+    "isPopular": true
+  },
+  {
+    "_id": 5,
+    "image": "https://www.lindamandarin.com.sg/wp-content/uploads/2021/02/business-chinese.jpg",
+    "name": "Mandarin for Business",
+    "instructorName": "Li Wei",
+    "availableSeats": 18,
+    "price": 160,
+    "isPopular": true
+  },
+  {
+    "_id": 6,
+    "image": "https://cle.hkust.edu.hk/sites/default/files/2023-09/Making%20Friends%20and%20Cantonese%20Sound%20System%20for%20Non%20Chinese%20background%20learners%20%282%29.jpg",
+    "name": "Japanese Culture and Language",
+    "instructorName": "Yuki Takahashi",
+    "availableSeats": 25,
+    "price": 140,
+    "isPopular": false
+  },
+  {
+    "_id": 7,
+    "image": "https://tmora.org/wp-content/uploads/2024/02/Screenshot-2024-02-09-at-8.23.20%E2%80%AFPM.png",
+    "name": "Russian Intermediate",
+    "instructorName": "Viktor Ivanov",
+    "availableSeats": 8,
+    "price": 200,
+    "isPopular": true
+  },
+  {
+    "_id": 8,
+    "image": "https://images.squarespace-cdn.com/content/v1/626d3a53496e6707a6e79662/a0a9a7cd-920e-4776-bda6-ad047564e1a8/arabic+classes+adult+2021.jpeg",
+    "name": "Arabic for Travelers",
+    "instructorName": "Fatima Ahmed",
+    "availableSeats": 15,
+    "price": 170,
+    "isPopular": true
+  },
+  {
+    "_id": 9,
+    "image": "https://www.90daykorean.com/wp-content/uploads/2014/12/Learn-Korean-Easy-Ways-to-Get-Started-min.png",
+    "name": "Korean Beginners",
+    "instructorName": "Min-Ji Kim",
+    "availableSeats": 20,
+    "price": 180,
+    "isPopular": true
+  },
+  {
+    "_id": 10,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhf1gHNQgTmsIpsJTsROwyu1xXuGVyhqDUlIipc0_-LBFhFqew5won0Nz5nDuIlOo8UGA&usqp=CAU",
+    "name": "Portuguese Advanced",
+    "instructorName": "João Silva",
+    "availableSeats": 10,
+    "price": 100,
+    "isPopular": true
+  }
+]

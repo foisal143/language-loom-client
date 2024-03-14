@@ -10,19 +10,20 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/istractors">Instractor</NavLink>
+        <NavLink to="/instractors">Instractors</NavLink>
       </li>
       <li>
         <NavLink to="/classes">Classes</NavLink>
       </li>
-      {user && (
+      {user ? (
         <li>
           <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
+      ) : (
+        <li>
+          <NavLink to="/login">Login</NavLink>
+        </li>
       )}
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
     </>
   );
 
@@ -30,7 +31,7 @@ const Navbar = () => {
     logout().then().catch();
   };
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-white shadow-md sticky top-0  w-full z-10 lg:px-12">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
