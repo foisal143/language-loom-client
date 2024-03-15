@@ -6,8 +6,7 @@ import 'sweetalert2/src/sweetalert2.scss';
 import toast from 'react-hot-toast';
 
 const ClassCard = ({ classItem }) => {
-  const { _id, name, instructorName, availableSeats, isPopular, price, image } =
-    classItem;
+  const { name, instructorName, availableSeats, price, image } = classItem;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);

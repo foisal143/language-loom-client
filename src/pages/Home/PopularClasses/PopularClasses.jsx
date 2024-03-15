@@ -1,10 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Container from '../../../components/Container/Container';
 import ClassCard from '../../../components/ClassCard/ClassCard';
-import { Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import 'sweetalert2/src/sweetalert2.scss';
-import { AuthContext } from '../../../Authprovaider/Authprovaider';
+import { Link } from 'react-router-dom';
+
 import Heading from '../../../components/Heading/Heading';
 const PopularClasses = () => {
   const [popularClass, setPopularClass] = useState([]);

@@ -5,7 +5,7 @@ import { AuthContext } from '../../Authprovaider/Authprovaider';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { googleLogin, loginEmailPass } = useContext(AuthContext);
+  const { loginEmailPass } = useContext(AuthContext);
   const [error, setError] = useState('');
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
