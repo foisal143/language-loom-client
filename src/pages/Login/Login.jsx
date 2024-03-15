@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Authprovaider/Authprovaider';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { googleLogin, loginEmailPass } = useContext(AuthContext);
@@ -27,17 +28,6 @@ const Login = () => {
         setLoader(false);
         setError(er.message);
       });
-  };
-
-  const handlerGoogleLogin = () => {
-    setError('');
-    googleLogin()
-      .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        navigate('/');
-      })
-      .catch(er => setError(er.message));
   };
 
   return (
@@ -103,15 +93,7 @@ const Login = () => {
               )}
             </button>
           </div>
-          <div>
-            <button
-              type="button"
-              onClick={handlerGoogleLogin}
-              className="w-full bg-red-500 text-white font-medium py-2 rounded hover:bg-red-600 focus:outline-none"
-            >
-              Login with Google
-            </button>
-          </div>
+          <SocialLogin />
           <p className="text-error label-text my-2 text-xs">{error}</p>
         </form>
       </div>

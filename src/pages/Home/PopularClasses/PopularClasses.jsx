@@ -8,27 +8,25 @@ import { AuthContext } from '../../../Authprovaider/Authprovaider';
 import Heading from '../../../components/Heading/Heading';
 const PopularClasses = () => {
   const [popularClass, setPopularClass] = useState([]);
-  const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
 
-  // handler for select the classes
-  const handlerSelectClass = id => {
-    if (!user) {
-      Swal.fire({
-        title: 'Please Login!',
-        text: 'You should login first!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Login!',
-      }).then(result => {
-        if (result.isConfirmed) {
-          navigate('/login');
-        }
-      });
-    }
-  };
+  // // handler for select the classes
+  // const handlerSelectClass = id => {
+  //   if (!user) {
+  //     Swal.fire({
+  //       title: 'Please Login!',
+  //       text: 'You should login first!',
+  //       icon: 'warning',
+  //       showCancelButton: true,
+  //       confirmButtonColor: '#3085d6',
+  //       cancelButtonColor: '#d33',
+  //       confirmButtonText: 'Login!',
+  //     }).then(result => {
+  //       if (result.isConfirmed) {
+  //         navigate('/login');
+  //       }
+  //     });
+  //   }
+  // };
 
   // fetch the classes data
   useEffect(() => {
@@ -38,7 +36,7 @@ const PopularClasses = () => {
         const popular = data.filter(item => item.isPopular === true);
         setPopularClass(popular);
       });
-  }, []);
+  }, [popularClass]);
 
   return (
     <Container>
@@ -46,11 +44,7 @@ const PopularClasses = () => {
       {popularClass && popularClass.length > 0 ? (
         <div className="grid mt-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {popularClass.map(classItem => (
-            <ClassCard
-              handlerSelectClass={handlerSelectClass}
-              classItem={classItem}
-              key={classItem._id}
-            />
+            <ClassCard classItem={classItem} key={classItem._id} />
           ))}
         </div>
       ) : (

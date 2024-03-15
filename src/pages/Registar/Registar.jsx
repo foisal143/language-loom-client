@@ -3,6 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Authprovaider/Authprovaider';
 import toast from 'react-hot-toast';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 const Registar = () => {
   const { signUpEmailPass, profileUpdate } = useContext(AuthContext);
@@ -24,13 +25,13 @@ const Registar = () => {
     const confirmPassword = form.confirmPass.value;
     const image = form.image.value;
     const phoneNumber = form.phoneNumber.value;
-
+    const address = form.address.value;
     const userInfo = {
-      name,
       email,
-      password,
-      image,
       phoneNumber,
+      gender,
+      name,
+      address,
     };
 
     // password validation
@@ -61,8 +62,20 @@ const Registar = () => {
           const loggedUser = result.user;
           console.log(loggedUser);
           profileUpdate(loggedUser, name, image).then(() => {
-            toast.success('Registation success');
-            navigate('/login');
+            fetch(`http://localhost:5000/users/${loggedUser.email}`, {
+              method: 'PUT',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify(userInfo),
+            })
+              .then(res => res.json())
+              .then(data => {
+                if (data.upsertedCount > 0 || data.matchedCount > 0) {
+                  toast.success('Registation success');
+                  navigate('/login');
+                }
+              });
             setLoader(false);
           });
         })
@@ -251,11 +264,7 @@ const Registar = () => {
               )}
             </button>
           </div>
-          <div>
-            <button className="w-full bg-red-500 text-white font-medium py-2 rounded hover:bg-red-600 focus:outline-none">
-              Login with Google
-            </button>
-          </div>
+          <SocialLogin />
         </form>
         <p className="text-error my-2">{error}</p>
       </div>
