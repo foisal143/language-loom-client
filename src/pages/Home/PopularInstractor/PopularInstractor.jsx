@@ -8,7 +8,7 @@ const PopularInstractor = () => {
 
   // fetch the data of instractor
   useEffect(() => {
-    fetch('instructors.json')
+    fetch('http://localhost:5000/instructors')
       .then(res => res.json())
       .then(data => {
         const popular = data.sort((a, b) => {
@@ -23,7 +23,7 @@ const PopularInstractor = () => {
       <div className="my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {popularInstractor && popularInstractor.length > 0
           ? popularInstractor.map(instractor => (
-              <PopularInsCard key={instractor.id} instractor={instractor} />
+              <PopularInsCard key={instractor._id} instractor={instractor} />
             ))
           : 'NO Istructor found'}
       </div>

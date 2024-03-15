@@ -32,7 +32,7 @@ const PopularClasses = () => {
 
   // fetch the classes data
   useEffect(() => {
-    fetch('classes.json')
+    fetch('http://localhost:5000/classes')
       .then(res => res.json())
       .then(data => {
         const popular = data.filter(item => item.isPopular === true);

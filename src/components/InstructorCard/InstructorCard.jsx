@@ -4,7 +4,7 @@ import { AuthContext } from '../../Authprovaider/Authprovaider';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 const InstructorCard = ({ instructor }) => {
-  const { name, image, classes_names, classes_taken, email, id } = instructor;
+  const { name, image, classes_names, classes_taken, email, _id } = instructor;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ const InstructorCard = ({ instructor }) => {
       </div>
       <div className="mt-2 absolute bottom-0 left-0 w-full p-2">
         <button
-          onClick={() => handlerSeeClass(id)}
+          onClick={() => handlerSeeClass(_id)}
           className="coustom-btn w-full"
         >
           See Classes

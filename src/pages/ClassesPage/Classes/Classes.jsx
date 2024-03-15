@@ -31,7 +31,7 @@ const Classes = () => {
   };
   // fetch the classes data
   useEffect(() => {
-    fetch('classes.json')
+    fetch('http://localhost:5000/classes')
       .then(res => res.json())
       .then(data => setClasses(data))
       .catch(er => console.log(er.message));
