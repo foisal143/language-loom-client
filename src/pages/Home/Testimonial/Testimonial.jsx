@@ -22,30 +22,32 @@ const Testimonial = () => {
   return (
     <Container>
       <Heading heading="student Testimonial"></Heading>
-      <div className="my-12 w-10/12  mx-auto">
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={'auto'}
-          coverflowEffect={{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          pagination={true}
-          modules={[EffectCoverflow, Pagination]}
-          className="mySwiper"
-        >
-          {reviews.length > 0 &&
-            reviews.map(item => (
-              <SwiperSlide key={item.name}>
-                <ReviewCard review={item}></ReviewCard>
-              </SwiperSlide>
-            ))}
-        </Swiper>
+      <div className="border border-dashed my-12 border-black rounded-md">
+        <div className="my-12 w-10/12  mx-auto">
+          <Swiper
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={'auto'}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination={true}
+            modules={[EffectCoverflow, Pagination]}
+            className="mySwiper"
+          >
+            {reviews.length > 0 &&
+              reviews.map(item => (
+                <SwiperSlide key={item.name}>
+                  <ReviewCard review={item}></ReviewCard>
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        </div>
       </div>
     </Container>
   );

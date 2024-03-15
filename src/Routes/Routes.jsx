@@ -3,7 +3,8 @@ import Main from '../layouts/Main';
 import Login from '../pages/Login/Login';
 import Registar from '../pages/Registar/Registar';
 import Home from '../pages/Home/Home/Home';
-
+import InstractorsPage from '../pages/InstructorsPage/InstructorsPage/InstractorsPage';
+import ClassesPage from '../pages/ClassesPage/ClassesPage/ClassesPage';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -16,11 +17,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'instractors',
-        element: <p>this is instractor page</p>,
+        element: <InstractorsPage />,
+      },
+      {
+        path: 'instructorClass/:id',
+        element: <p>this is single class page</p>,
       },
       {
         path: 'classes',
-        element: <p>this is classes page</p>,
+        element: <ClassesPage />,
       },
       {
         path: 'login',
