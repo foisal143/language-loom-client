@@ -1,6 +1,6 @@
-import { FaAmazonPay, FaRegTrashAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-const SelectClassRow = ({ item, i, handlerDelete }) => {
+import { FaRegTrashAlt } from 'react-icons/fa';
+
+const EnrolledRow = ({ i, item, handlerDelete }) => {
   const { name, price, instructor, image, _id } = item;
   return (
     <tr>
@@ -26,15 +26,13 @@ const SelectClassRow = ({ item, i, handlerDelete }) => {
         </button>
       </td>
       <td>
-        <Link to={`/dashboard/payment/${_id}`}>
-          {' '}
-          <button className="w-10 h-10 rounded-full bg-green-500 flex justify-center items-center text-white text-xl">
-            <FaAmazonPay />
-          </button>
-        </Link>
+        {' '}
+        <button className="w-10 h-10 rounded-full bg-green-500 flex justify-center items-center text-white ">
+          Done
+        </button>
       </td>
     </tr>
   );
 };
 
-export default SelectClassRow;
+export default EnrolledRow;

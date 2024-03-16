@@ -31,6 +31,7 @@ const ClassCard = ({ classItem }) => {
         image: choseClass.image,
         name: choseClass.name,
         price: choseClass.price,
+        id: choseClass._id,
         instructor: choseClass.instructorName,
       };
       setLoading(true);
@@ -92,19 +93,3 @@ const ClassCard = ({ classItem }) => {
 };
 
 export default ClassCard;
-
-// decreased the available seats featch
-
-//  fetch(`http://localhost:5000/classes/${choseClass._id}`, {
-//    method: 'PATCH',
-//    headers: {
-//      'content-type': 'application/json',
-//    },
-//    body: JSON.stringify({ seats: choseClass.availableSeats - 1 }),
-//  })
-//    .then(res => res.json())
-//    .then(data => {
-//      if (data.modifiedCount > 0) {
-//        toast.success('Added To Your Selected Page');
-//      }
-//    });

@@ -20,7 +20,7 @@ const Login = () => {
     loginEmailPass(email, password)
       .then(result => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+
         setLoader(false);
         navigate('/');
       })

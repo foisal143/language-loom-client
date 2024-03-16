@@ -56,11 +56,10 @@ const Registar = () => {
       setError('Password should be one special charecter');
       return;
     } else {
-      console.log(userInfo);
       signUpEmailPass(email, password)
         .then(result => {
           const loggedUser = result.user;
-          console.log(loggedUser);
+
           profileUpdate(loggedUser, name, image).then(() => {
             fetch(`http://localhost:5000/users/${loggedUser.email}`, {
               method: 'PUT',

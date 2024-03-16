@@ -41,6 +41,20 @@ const Authprovaider = ({ children }) => {
   useEffect(() => {
     const disconect = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
+      const email = { email: currentUser?.email };
+      fetch('http://localhost:5000/jwt', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(email),
+      })
+        .then(res => res.json())
+        .then(data => {
+          const { token } = data;
+
+          localStorage.setItem('ln-jwt-token', token);
+        });
       setLoading(false);
     });
     return () => disconect();

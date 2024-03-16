@@ -10,7 +10,7 @@ const DashboardNav = () => {
         <Link to="/dashboard/Select-Classes">My Selected Class</Link>
       </li>
       <li>
-        <Link to="/dashboard/enrolled-Classes">My Enrolled Class</Link>
+        <Link to="/dashboard/enrolled-class">My Enrolled Class</Link>
       </li>
       <li>
         <Link to="/dashboard/payment-history">Payment History</Link>

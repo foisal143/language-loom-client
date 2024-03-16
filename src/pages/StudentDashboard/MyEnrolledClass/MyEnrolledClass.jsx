@@ -1,13 +1,14 @@
 import Swal from 'sweetalert2';
 import Container from '../../../components/Container/Container';
+import EnrolledRow from '../../../components/EnrolledRow/EnrolledRow';
 import Heading from '../../../components/Heading/Heading';
 import SelectClassRow from '../../../components/SelectClassRow/SelectClassRow';
-import useSelectClass from '../../../hooks/useSelectClass';
+import useEnrolledClass from '../../../hooks/useEnrolledClass';
+import useAxiosSeciure from '../../../hooks/useAxiosSeciure';
 
-const MySelectClass = () => {
-  const [selectClass, refetch] = useSelectClass();
-
-  // hander delete the selected class
+const MyEnrolledClass = () => {
+  const [enrolledClass, refetch] = useEnrolledClass();
+  const axiosSeciure = useAxiosSeciure();
   const handlerDelete = id => {
     Swal.fire({
       title: 'Are you sure?',
@@ -19,27 +20,23 @@ const MySelectClass = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selectedClasses/${id}`, {
-          method: 'DELETE',
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data.deletedCount > 0) {
-              refetch();
-              Swal.fire({
-                title: 'Deleted!',
-                text: 'Your class has been deleted.',
-                icon: 'success',
-              });
-            }
-          });
+        axiosSeciure.delete(`/enrolled-class/${id}`).then(data => {
+          if (data.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your class has been deleted.',
+              icon: 'success',
+            });
+          }
+        });
       }
     });
   };
   return (
     <Container>
-      <Heading heading="My Selected Class"></Heading>
-      {selectClass && selectClass.length > 0 ? (
+      <Heading heading="My Enrolled class"></Heading>
+      {enrolledClass && enrolledClass.length > 0 ? (
         <div className="my-12">
           <div className="overflow-x-auto">
             <table className="table">
@@ -52,19 +49,18 @@ const MySelectClass = () => {
                   <th>Instructor</th>
                   <th>Price</th>
                   <th>Delete</th>
-                  <th>Pay</th>
+                  <th>Paid</th>
                 </tr>
               </thead>
               <tbody>
-                {selectClass &&
-                  selectClass.length > 0 &&
-                  selectClass.map((item, i) => (
-                    <SelectClassRow
-                      handlerDelete={handlerDelete}
-                      i={i}
+                {enrolledClass.length > 0 &&
+                  enrolledClass.map((item, i) => (
+                    <EnrolledRow
                       key={item._id}
+                      i={i}
+                      handlerDelete={handlerDelete}
                       item={item}
-                    ></SelectClassRow>
+                    ></EnrolledRow>
                   ))}
               </tbody>
             </table>
@@ -72,11 +68,11 @@ const MySelectClass = () => {
         </div>
       ) : (
         <p className="text-center mt-12 text-2xl font-semibold">
-          No Class Selected
+          No Class Enrolled
         </p>
       )}
     </Container>
   );
 };
 
-export default MySelectClass;
+export default MyEnrolledClass;

@@ -10,6 +10,8 @@ import StudentHome from '../pages/StudentDashboard/StudentHome/StudentHome';
 import MySelectClass from '../pages/StudentDashboard/MySelectClass/MySelectClass';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PaymentPage from '../pages/StudentDashboard/PaymentPage/PaymentPage';
+import MyEnrolledClass from '../pages/StudentDashboard/MyEnrolledClass/MyEnrolledClass';
+import PaymentHistory from '../pages/StudentDashboard/PymentHistory/PaymentHistory';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -53,15 +55,45 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'studentHome',
-        element: <StudentHome />,
+        element: (
+          <PrivateRoute>
+            <StudentHome />
+          </PrivateRoute>
+        ),
       },
       {
         path: 'Select-Classes',
-        element: <MySelectClass />,
+        element: (
+          <PrivateRoute>
+            <MySelectClass />
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'payment',
-        element: <PaymentPage />,
+        path: 'payment/:id',
+        element: (
+          <PrivateRoute>
+            <PaymentPage />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/classes/${params.id}`),
+      },
+      {
+        path: 'enrolled-class',
+        element: (
+          <PrivateRoute>
+            <MyEnrolledClass />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'payment-history',
+        element: (
+          <PrivateRoute>
+            <PaymentHistory></PaymentHistory>
+          </PrivateRoute>
+        ),
       },
     ],
   },

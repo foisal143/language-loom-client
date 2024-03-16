@@ -12,7 +12,6 @@ const StudentHome = () => {
       .then(data => setUserInfo(data));
   }, [user]);
 
-  console.log(userInfo);
   return (
     <div className="my-12">
       <Heading heading="Profile"></Heading>
