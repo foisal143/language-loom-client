@@ -3,8 +3,7 @@ import Container from '../../../components/Container/Container';
 import Heading from '../../../components/Heading/Heading';
 import useAxiosSeciure from '../../../hooks/useAxiosSeciure';
 import useUsers from '../../../hooks/useUsers';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../../../Authprovaider/Authprovaider';
+import { useState } from 'react';
 
 const ManageUsers = () => {
   const [users, refetch] = useUsers();
