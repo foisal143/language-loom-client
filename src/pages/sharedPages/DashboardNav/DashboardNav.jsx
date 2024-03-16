@@ -1,20 +1,53 @@
 import { Link } from 'react-router-dom';
+import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 
 const DashboardNav = () => {
+  const isAdmin = useAdmin();
+  const isInstructor = useInstructor();
   const link = (
     <>
-      <li>
-        <Link to="/dashboard/studentHome">Student Home</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/Select-Classes">My Selected Class</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/enrolled-class">My Enrolled Class</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/payment-history">Payment History</Link>
-      </li>
+      {(isAdmin && (
+        <>
+          <li>
+            <Link to="/dashboard/adminHome">Admin Home</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/Select-Classes">Manage Classes</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/enrolled-class">Manage Users</Link>
+          </li>
+        </>
+      )) ||
+        (isInstructor && (
+          <>
+            <li>
+              <Link to="/dashboard/studentHome">Instructor Home</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/Select-Classes">Add A Class</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/enrolled-class">My Classes</Link>
+            </li>
+          </>
+        )) || (
+          <>
+            <li>
+              <Link to="/dashboard/studentHome">Student Home</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/Select-Classes">My Selected Class</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/enrolled-class">My Enrolled Class</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/payment-history">Payment History</Link>
+            </li>
+          </>
+        )}
     </>
   );
   return (

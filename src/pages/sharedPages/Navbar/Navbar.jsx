@@ -2,7 +2,11 @@ import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Authprovaider/Authprovaider';
 import './Navbar.css';
+import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 const Navbar = () => {
+  const isAdmin = useAdmin();
+  const isInstructor = useInstructor();
   const { logout, user } = useContext(AuthContext);
   const links = (
     <>
@@ -17,7 +21,15 @@ const Navbar = () => {
       </li>
       {user ? (
         <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink
+            to={
+              (isAdmin && '/dashboard/adminHome') ||
+              (isInstructor && '/dashboard/instructorHome') ||
+              '/dashboard/studentHome'
+            }
+          >
+            Dashboard
+          </NavLink>
         </li>
       ) : (
         <li>
