@@ -13,10 +13,10 @@ const DashboardNav = () => {
             <Link to="/dashboard/adminHome">Admin Home</Link>
           </li>
           <li>
-            <Link to="/dashboard/Select-Classes">Manage Classes</Link>
+            <Link to="/dashboard/manage-classes">Manage Classes</Link>
           </li>
           <li>
-            <Link to="/dashboard/enrolled-class">Manage Users</Link>
+            <Link to="/dashboard/manage-users">Manage Users</Link>
           </li>
         </>
       )) ||

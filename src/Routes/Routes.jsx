@@ -12,6 +12,9 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PaymentPage from '../pages/StudentDashboard/PaymentPage/PaymentPage';
 import MyEnrolledClass from '../pages/StudentDashboard/MyEnrolledClass/MyEnrolledClass';
 import PaymentHistory from '../pages/StudentDashboard/PymentHistory/PaymentHistory';
+import AdminHome from '../pages/AdminDashboard/AdminHome/AdminHome';
+import ManagesClasses from '../pages/AdminDashboard/ManageClasses/ManagesClasses';
+import ManageUsers from '../pages/AdminDashboard/ManageUsers/ManageUsers';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -53,6 +56,7 @@ const router = createBrowserRouter([
     ),
     errorElement: <p>this is an error page</p>,
     children: [
+      // student routes
       {
         path: 'studentHome',
         element: (
@@ -92,6 +96,31 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PaymentHistory></PaymentHistory>
+          </PrivateRoute>
+        ),
+      },
+      // admin route here
+      {
+        path: 'adminHome',
+        element: (
+          <PrivateRoute>
+            <AdminHome />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'manage-classes',
+        element: (
+          <PrivateRoute>
+            <ManagesClasses></ManagesClasses>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'manage-users',
+        element: (
+          <PrivateRoute>
+            <ManageUsers />
           </PrivateRoute>
         ),
       },
