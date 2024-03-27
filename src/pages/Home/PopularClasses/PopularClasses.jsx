@@ -31,7 +31,14 @@ const PopularClasses = () => {
     fetch('http://localhost:5000/classes')
       .then(res => res.json())
       .then(data => {
-        const popular = data.filter(item => item.isPopular === true);
+        const popularClassSorted = data
+          .sort((a, b) => {
+            return b.inrolledStudent - a.inrolledStudent;
+          })
+          .slice(0, 6);
+        const popular = popularClassSorted.filter(
+          item => item.status === 'allowed'
+        );
         setPopularClass(popular);
       });
   }, [popularClass]);

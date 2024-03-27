@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import app from '../firebase/firebase';
+
 export const AuthContext = createContext(null);
 const Authprovaider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -42,6 +43,7 @@ const Authprovaider = ({ children }) => {
     const disconect = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
       const email = { email: currentUser?.email };
+
       fetch('http://localhost:5000/jwt', {
         method: 'POST',
         headers: {

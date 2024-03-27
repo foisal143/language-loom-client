@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Authprovaider/Authprovaider';
 
 const DashboardNav = () => {
+  const { user } = useContext(AuthContext);
   const isAdmin = useAdmin();
   const isInstructor = useInstructor();
+
   const link = (
     <>
       {(isAdmin && (
@@ -23,16 +27,17 @@ const DashboardNav = () => {
         (isInstructor && (
           <>
             <li>
-              <Link to="/dashboard/studentHome">Instructor Home</Link>
+              <Link to="/dashboard/instructorHome">Instructor Home</Link>
             </li>
             <li>
-              <Link to="/dashboard/Select-Classes">Add A Class</Link>
+              <Link to="/dashboard/add-Class">Add A Class</Link>
             </li>
             <li>
-              <Link to="/dashboard/enrolled-class">My Classes</Link>
+              <Link to="/dashboard/my-class">My Classes</Link>
             </li>
           </>
-        )) || (
+        )) ||
+        (user && (
           <>
             <li>
               <Link to="/dashboard/studentHome">Student Home</Link>
@@ -47,7 +52,7 @@ const DashboardNav = () => {
               <Link to="/dashboard/payment-history">Payment History</Link>
             </li>
           </>
-        )}
+        ))}
     </>
   );
   return (

@@ -15,6 +15,10 @@ import PaymentHistory from '../pages/StudentDashboard/PymentHistory/PaymentHisto
 import AdminHome from '../pages/AdminDashboard/AdminHome/AdminHome';
 import ManagesClasses from '../pages/AdminDashboard/ManageClasses/ManagesClasses';
 import ManageUsers from '../pages/AdminDashboard/ManageUsers/ManageUsers';
+import InstructorHome from '../pages/InstructorDashboard/InstructorHome/InstructorHome';
+import AddClassPage from '../pages/InstructorDashboard/AddClassPage/AddClassPage';
+import MyClass from '../pages/InstructorDashboard/MyClass/MyClass';
+import AdminRoute from '../AdminRoute/AdminRoute';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -104,7 +108,9 @@ const router = createBrowserRouter([
         path: 'adminHome',
         element: (
           <PrivateRoute>
-            <AdminHome />
+            <AdminRoute>
+              <AdminHome />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -112,7 +118,9 @@ const router = createBrowserRouter([
         path: 'manage-classes',
         element: (
           <PrivateRoute>
-            <ManagesClasses></ManagesClasses>
+            <AdminRoute>
+              <ManagesClasses></ManagesClasses>
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -123,6 +131,19 @@ const router = createBrowserRouter([
             <ManageUsers />
           </PrivateRoute>
         ),
+      },
+      // instructor route
+      {
+        path: 'instructorHome',
+        element: <InstructorHome />,
+      },
+      {
+        path: 'add-Class',
+        element: <AddClassPage />,
+      },
+      {
+        path: 'my-class',
+        element: <MyClass />,
       },
     ],
   },

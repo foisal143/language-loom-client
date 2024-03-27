@@ -8,12 +8,12 @@ import { useState } from 'react';
 const ManageUsers = () => {
   const [users, refetch] = useUsers();
   const axiosSecuire = useAxiosSeciure();
-
+  console.log(users);
   const [loading, setLoading] = useState(false);
   // handler function for make admin
   const handlerMakeAdmin = email => {
     setLoading(true);
-    console.log('clicked');
+
     const role = { role: 'admin' };
     axiosSecuire
       .patch(`/users/${email}`, role)

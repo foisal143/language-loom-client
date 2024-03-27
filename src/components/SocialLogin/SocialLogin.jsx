@@ -2,8 +2,10 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Authprovaider/Authprovaider';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import useAdminOrInstructor from '../../hooks/useAdminOrInstructor';
 
 const SocialLogin = () => {
+  const [, refetch] = useAdminOrInstructor();
   const { googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const handlerGoogleLogin = () => {
@@ -29,6 +31,7 @@ const SocialLogin = () => {
           .then(data => {
             if (data.upsertedCount > 0 || data.matchedCount > 0) {
               toast.success('Login success');
+              refetch();
             }
           });
         navigate('/');

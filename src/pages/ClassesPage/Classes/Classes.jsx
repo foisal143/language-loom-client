@@ -10,7 +10,10 @@ const Classes = () => {
   useEffect(() => {
     fetch('http://localhost:5000/classes')
       .then(res => res.json())
-      .then(data => setClasses(data))
+      .then(data => {
+        const allowedData = data.filter(item => item.status === 'allowed');
+        setClasses(allowedData);
+      })
       .catch(er => console.log(er.message));
   }, [classes]);
   return (

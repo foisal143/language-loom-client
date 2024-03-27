@@ -4,10 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import toast from 'react-hot-toast';
+import useAdmin from '../../hooks/useAdmin';
 
 const ClassCard = ({ classItem }) => {
-  const { name, instructorName, availableSeats, price, image } = classItem;
+  const { name, instructor, availableSeats, price, image, inrolledStudent } =
+    classItem;
   const { user } = useContext(AuthContext);
+  const isAdmin = useAdmin();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const handlerSelectClass = choseClass => {
@@ -33,6 +36,8 @@ const ClassCard = ({ classItem }) => {
         price: choseClass.price,
         id: choseClass._id,
         instructor: choseClass.instructorName,
+        availableSeats,
+        inrolledStudent,
       };
       setLoading(true);
       fetch('http://localhost:5000/selectedClasses', {
@@ -65,7 +70,7 @@ const ClassCard = ({ classItem }) => {
         <h3 className="text-2xl font-bold">{name}</h3>
         <p>
           {' '}
-          <strong>Instructor:</strong> {instructorName}
+          <strong>Instructor:</strong> {instructor}
         </p>
         <p>
           <strong>Available sets:</strong> {availableSeats}
@@ -76,7 +81,7 @@ const ClassCard = ({ classItem }) => {
 
         <div className="text-center">
           <button
-            disabled={availableSeats === 0 || loading}
+            disabled={availableSeats === 0 || loading || isAdmin}
             onClick={() => handlerSelectClass(classItem)}
             className={` absolute bottom-[6px] left-[6px]  w-[95%] mx-auto ${
               availableSeats === 0

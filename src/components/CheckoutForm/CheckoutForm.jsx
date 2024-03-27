@@ -81,10 +81,11 @@ const CheckoutForm = ({ classItem }) => {
           email: classItem.email,
           instructor: classItem.instructor,
         };
-
+        console.log('from success payment');
         // post the enrolled data
         axiosSeciure.post('/enrolled-class', enrolledInfo).then(data => {
           if (data.data.insertedId) {
+            console.log('from inrolled');
             const paymentInfo = {
               name: user?.displayName,
               email: user?.email,
@@ -97,18 +98,45 @@ const CheckoutForm = ({ classItem }) => {
 
             axiosSeciure.post('/payments', paymentInfo).then(data => {
               if (data.data.insertedId) {
+                console.log('from payment inf in db');
                 // delete the selected class
                 axiosSeciure
                   .delete(`/selectedClasses/${classItem._id}`)
                   .then(data => {
                     if (data.data.deletedCount > 0) {
+                      console.log('from delete select class');
+                      const seats = classItem?.availableSeats - 1;
+                      console.log(classItem?.availableSeats);
                       // update the avoilable seats
                       axiosSeciure
-                        .patch(`/classes/${classItem.id}`)
+                        .patch(`/classes/${classItem.id}`, {
+                          seats: seats,
+                          feedback: null,
+                          status: null,
+                          inrolled: null,
+                        })
                         .then(data => {
+                          console.log(data);
                           if (data.data.modifiedCount > 0) {
-                            toast.success('Payment success');
-                            navigate('/dashboard/enrolled-class');
+                            console.log('from modified the class seats');
+                            const inrolled = classItem?.inrolledStudent + 1;
+                            // update inrolled student
+                            axiosSeciure
+                              .patch(`/classes/${classItem.id}`, {
+                                inrolled: inrolled,
+                                status: null,
+                                feedback: null,
+                                seats: null,
+                              })
+                              .then(data => {
+                                if (data.data.modifiedCount > 0) {
+                                  console.log(
+                                    'modified the class inrolled student'
+                                  );
+                                  toast.success('Payment success');
+                                  navigate('/dashboard/enrolled-class');
+                                }
+                              });
                           }
                         });
                     }

@@ -33,7 +33,12 @@ const ManagesClasses = () => {
                   {classes &&
                     classes.length > 0 &&
                     classes.map((item, i) => (
-                      <ManageClassRow key={item._id} i={i} item={item} />
+                      <ManageClassRow
+                        refetch={refetch}
+                        key={item._id}
+                        i={i}
+                        item={item}
+                      />
                     ))}
                 </tbody>
               </table>

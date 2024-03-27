@@ -3,7 +3,9 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Authprovaider/Authprovaider';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import useAdminOrInstructor from '../../hooks/useAdminOrInstructor';
 const Login = () => {
+  const [, refetch] = useAdminOrInstructor();
   const [showPassword, setShowPassword] = useState(false);
   const { loginEmailPass } = useContext(AuthContext);
   const [error, setError] = useState('');
@@ -20,7 +22,9 @@ const Login = () => {
     loginEmailPass(email, password)
       .then(result => {
         const loggedUser = result.user;
-
+        if (loggedUser) {
+          refetch();
+        }
         setLoader(false);
         navigate('/');
       })
