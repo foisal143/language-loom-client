@@ -61,7 +61,10 @@ const AddClassPage = () => {
   return (
     <Container>
       <Heading heading="Add Class"></Heading>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="max-w-lg mx-auto mt-12"
+      >
         <div className="mb-4">
           <label
             htmlFor="className"
@@ -72,6 +75,7 @@ const AddClassPage = () => {
           <input
             type="text"
             id="className"
+            placeholder="Enter the class name"
             {...register('className', { required: true })}
             className="mt-1 p-2 border border-gray-300 rounded-md w-full"
           />
@@ -119,6 +123,7 @@ const AddClassPage = () => {
           <input
             type="number"
             id="availableSeats"
+            placeholder="Enter the available seats for student"
             {...register('availableSeats', { required: true })}
             className="mt-1 p-2 border border-gray-300 rounded-md w-full"
           />
@@ -138,6 +143,7 @@ const AddClassPage = () => {
           <input
             type="number"
             id="price"
+            placeholder="Enter price of Class"
             {...register('price', { required: true })}
             className="mt-1 p-2 border border-gray-300 rounded-md w-full"
           />

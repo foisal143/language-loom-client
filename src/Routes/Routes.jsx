@@ -19,6 +19,7 @@ import InstructorHome from '../pages/InstructorDashboard/InstructorHome/Instruct
 import AddClassPage from '../pages/InstructorDashboard/AddClassPage/AddClassPage';
 import MyClass from '../pages/InstructorDashboard/MyClass/MyClass';
 import AdminRoute from '../AdminRoute/AdminRoute';
+import InstructorRoute from '../InstructorRoute/InstructorRoute';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -128,22 +129,43 @@ const router = createBrowserRouter([
         path: 'manage-users',
         element: (
           <PrivateRoute>
-            <ManageUsers />
+            <AdminRoute>
+              {' '}
+              <ManageUsers />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
       // instructor route
       {
         path: 'instructorHome',
-        element: <InstructorHome />,
+        element: (
+          <PrivateRoute>
+            <InstructorRoute>
+              <InstructorHome />
+            </InstructorRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'add-Class',
-        element: <AddClassPage />,
+        element: (
+          <PrivateRoute>
+            <InstructorRoute>
+              <AddClassPage />
+            </InstructorRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'my-class',
-        element: <MyClass />,
+        element: (
+          <PrivateRoute>
+            <InstructorRoute>
+              <MyClass />
+            </InstructorRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },

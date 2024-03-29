@@ -1,10 +1,12 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import useAxiosSeciure from '../../hooks/useAxiosSeciure';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../Authprovaider/Authprovaider';
 
 const ManageClassRow = ({ item, i, refetch }) => {
   const modalRef = useRef();
   const openModalRef = useRef();
+  const { user } = useContext(AuthContext);
   // todo: admin status and feedback are not functional
   const axiosSeciure = useAxiosSeciure();
   const { name, price, instructorName, image, _id, availableSeats, status } =
@@ -26,6 +28,14 @@ const ManageClassRow = ({ item, i, refetch }) => {
           toast.success('Status Updated');
           if (status === 'denied') {
             openModalRef.current.click();
+          }
+
+          if (status === 'allowed') {
+            axiosSeciure.patch(`/users/${user?.email}`, item).then(data => {
+              if (data.data.modifiedCount > 0) {
+                toast.success('Status Updated');
+              }
+            });
           }
           refetch();
         }
