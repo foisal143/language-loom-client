@@ -32,6 +32,7 @@ const Registar = () => {
       gender,
       name,
       address,
+      image,
     };
 
     // password validation

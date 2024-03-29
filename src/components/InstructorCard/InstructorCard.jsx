@@ -4,7 +4,7 @@ import { AuthContext } from '../../Authprovaider/Authprovaider';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 const InstructorCard = ({ instructor }) => {
-  const { name, image, classes_names, classes_taken, email, _id } = instructor;
+  const { name, image, email, _id } = instructor;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -36,13 +36,6 @@ const InstructorCard = ({ instructor }) => {
         <p>
           <strong>Email:</strong> {email}
         </p>
-        <p>
-          <strong>Classes:</strong> {classes_taken}
-        </p>
-        <ul className="list-disc relative left-5">
-          {classes_names &&
-            classes_names.map(item => <li key={item}>{item}</li>)}
-        </ul>
       </div>
       <div className="mt-2 absolute bottom-0 left-0 w-full p-2">
         <button
