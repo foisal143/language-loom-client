@@ -8,7 +8,7 @@ const InstructorCard = ({ instructor }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handlerSeeClass = id => {
+  const handlerSeeClass = email => {
     if (!user) {
       Swal.fire({
         title: 'Please Login!',
@@ -24,7 +24,7 @@ const InstructorCard = ({ instructor }) => {
         }
       });
     } else {
-      navigate(`/instructorClass/${id}`);
+      navigate(`/instructorClass/${email}`);
     }
   };
 
@@ -39,7 +39,7 @@ const InstructorCard = ({ instructor }) => {
       </div>
       <div className="mt-2 absolute bottom-0 left-0 w-full p-2">
         <button
-          onClick={() => handlerSeeClass(_id)}
+          onClick={() => handlerSeeClass(email)}
           className="coustom-btn w-full"
         >
           See Classes

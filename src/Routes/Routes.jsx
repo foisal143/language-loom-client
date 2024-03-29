@@ -20,6 +20,7 @@ import AddClassPage from '../pages/InstructorDashboard/AddClassPage/AddClassPage
 import MyClass from '../pages/InstructorDashboard/MyClass/MyClass';
 import AdminRoute from '../AdminRoute/AdminRoute';
 import InstructorRoute from '../InstructorRoute/InstructorRoute';
+import InstructorClasses from '../pages/InstructorClasses/InstructorClasses';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -35,8 +36,10 @@ const router = createBrowserRouter([
         element: <InstractorsPage />,
       },
       {
-        path: 'instructorClass/:id',
-        element: <p>this is single class page</p>,
+        path: 'instructorClass/:email',
+        element: <InstructorClasses />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/classes?email=${params.email}`),
       },
       {
         path: 'classes',

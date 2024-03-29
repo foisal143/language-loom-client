@@ -30,13 +30,6 @@ const ManageClassRow = ({ item, i, refetch }) => {
             openModalRef.current.click();
           }
 
-          if (status === 'allowed') {
-            axiosSeciure.patch(`/users/${user?.email}`, item).then(data => {
-              if (data.data.modifiedCount > 0) {
-                toast.success('Status Updated');
-              }
-            });
-          }
           refetch();
         }
       });
