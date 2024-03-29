@@ -46,6 +46,7 @@ const AddClassPage = () => {
             inrolledStudent: 0,
             instructor: user?.displayName,
             email: user?.email,
+            date: new Date(),
           };
           axiosSecure.post('/classes', classInfo).then(data => {
             if (data.data.insertedId) {

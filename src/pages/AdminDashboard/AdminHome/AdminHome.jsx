@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import Heading from '../../../components/Heading/Heading';
+
 import { AuthContext } from '../../../Authprovaider/Authprovaider';
 import useAdmin from '../../../hooks/useAdmin';
 
@@ -15,7 +15,6 @@ const AdminHome = () => {
 
   return (
     <div className="my-12">
-      <Heading heading="Admin Profile"></Heading>
       <div className=" lg:flex justify-center  items-center mt-12">
         <div className="lg:w-1/2 space-y-3 flex flex-col justify-center  items-center  bg-blue-300 h-[400px] rounded-md">
           <h3 className="text-center text-3xl font-bold">

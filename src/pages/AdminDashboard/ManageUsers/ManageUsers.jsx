@@ -3,13 +3,20 @@ import Container from '../../../components/Container/Container';
 import Heading from '../../../components/Heading/Heading';
 import useAxiosSeciure from '../../../hooks/useAxiosSeciure';
 import useUsers from '../../../hooks/useUsers';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ManageUsers = () => {
-  const [users, refetch] = useUsers();
+  const [users, setUsers] = useState([]);
   const axiosSecuire = useAxiosSeciure();
-  console.log(users);
   const [loading, setLoading] = useState(false);
+  const [control, setControl] = useState(false);
+
+  useEffect(() => {
+    axiosSecuire.get('/users').then(data => {
+      setUsers(data.data);
+    });
+  }, [control, axiosSecuire]);
+
   // handler function for make admin
   const handlerMakeAdmin = email => {
     setLoading(true);
@@ -20,7 +27,7 @@ const ManageUsers = () => {
       .then(data => {
         if (data.data.modifiedCount > 0) {
           toast.success('Those User is Admin Now');
-          refetch();
+          setControl(!control);
         }
       })
       .catch(er => console.log(er.message));
@@ -36,7 +43,7 @@ const ManageUsers = () => {
       .then(data => {
         if (data.data.modifiedCount > 0) {
           toast.success('Those User is Instructor Now');
-          refetch();
+          setControl(!control);
         }
       })
       .catch(er => console.log(er.message));

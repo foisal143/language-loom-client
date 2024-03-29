@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import Heading from '../../../components/Heading/Heading';
+
 import { AuthContext } from '../../../Authprovaider/Authprovaider';
 
 const StudentHome = () => {
@@ -14,10 +14,14 @@ const StudentHome = () => {
 
   return (
     <div className="my-12">
-      <Heading heading="Profile"></Heading>
       <div className=" lg:flex justify-center  items-center mt-12">
-        <div className="lg:w-1/2 flex flex-col justify-center  items-center  bg-blue-300 h-[400px] rounded-md">
-          <img className="w-24 h-24 rounded-full" src={user?.photoURL} alt="" />
+        <div className="lg:w-1/2 flex text-center flex-col justify-center  space-y-3 items-center  bg-blue-300 h-[400px] rounded-md">
+          <h3 className="text-center text-3xl font-bold"> Student</h3>
+          <img
+            className="w-24 border h-24 rounded-full"
+            src={user?.photoURL}
+            alt=""
+          />
           <div>
             <h3 className="text-3xl font-bold">{userInfo?.name}</h3>
             <p>
