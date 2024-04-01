@@ -1,61 +1,32 @@
-import { useContext, useRef, useState } from 'react';
+import { useState } from 'react';
 import useAxiosSeciure from '../../hooks/useAxiosSeciure';
 import toast from 'react-hot-toast';
-import { AuthContext } from '../../Authprovaider/Authprovaider';
 
-const ManageClassRow = ({ item, i, refetch }) => {
-  const modalRef = useRef();
-  const openModalRef = useRef();
-  const { user } = useContext(AuthContext);
+const ManageClassRow = ({ item, i, handlerFeedBack, refetch }) => {
   // todo: admin status and feedback are not functional
   const axiosSeciure = useAxiosSeciure();
+  const [id, setId] = useState('');
   const { name, price, instructorName, image, _id, availableSeats, status } =
     item;
   const [value, setValue] = useState(status);
-
+  console.log(item);
   // handler status change
-  const handlerStatusChange = e => {
+  const handlerStatusChange = async e => {
     const status = e.target.value;
-    setValue(e.target.value);
-    axiosSeciure
-      .patch(`/classes/${_id}`, {
+    try {
+      const data = await axiosSeciure.patch(`/classes/${_id}`, {
         status: status,
         feedback: null,
         inrolled: null,
-      })
-      .then(data => {
-        if (data.data.modifiedCount > 0) {
-          toast.success('Status Updated');
-          if (status === 'denied') {
-            openModalRef.current.click();
-          }
-
-          refetch();
-        }
       });
-  };
-
-  // handler send feedback
-  const handlerFeedBack = e => {
-    e.preventDefault();
-
-    const feedbackValue = e.target.feedback.value;
-    const feedback = status === 'denied' ? feedbackValue : '';
-    console.log(feedback);
-    axiosSeciure
-      .patch(`/classes/${_id}`, {
-        feedback: feedback,
-        status: null,
-        inrolled: null,
-      })
-      .then(data => {
-        console.log(data);
-        if (data.data.modifiedCount > 0) {
-          toast.success('Feddback send');
-          modalRef.current.click();
-          refetch();
-        }
-      });
+      if (data.data.modifiedCount > 0) {
+        toast.success('Status changed');
+        setValue(status);
+        refetch();
+      }
+    } catch (er) {
+      console.log(er.message);
+    }
   };
 
   return (
@@ -94,8 +65,10 @@ const ManageClassRow = ({ item, i, refetch }) => {
       </td>
       <td>
         <button
-          ref={openModalRef}
-          onClick={() => document.getElementById('my_modal_3').showModal()}
+          onClick={() => {
+            document.getElementById('my_modal_3').showModal();
+            setId(item?._id);
+          }}
           className="coustom-btn"
         >
           Send FeedBack
@@ -109,16 +82,17 @@ const ManageClassRow = ({ item, i, refetch }) => {
         <div className="modal-box">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <button
-              ref={modalRef}
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
           <h3 className="font-bold text-lg">Write a feedback!</h3>
           <div>
-            <form onSubmit={handlerFeedBack} className="mt-5" action="">
+            <form
+              onSubmit={e => handlerFeedBack(e, id)}
+              className="mt-5"
+              action=""
+            >
               <textarea
                 className="block w-full textarea textarea-primary"
                 name="feedback"

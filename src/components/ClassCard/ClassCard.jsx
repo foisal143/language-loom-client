@@ -5,10 +5,19 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import toast from 'react-hot-toast';
 import useAdmin from '../../hooks/useAdmin';
+import useAxiosSeciure from '../../hooks/useAxiosSeciure';
 
 const ClassCard = ({ classItem }) => {
-  const { name, instructor, availableSeats, price, image, inrolledStudent } =
-    classItem;
+  const {
+    name,
+    instructor,
+    availableSeats,
+    price,
+    image,
+    inrolledStudent,
+    email,
+  } = classItem;
+  const axiosSecuire = useAxiosSeciure();
   const { user } = useContext(AuthContext);
   const isAdmin = useAdmin();
   const navigate = useNavigate();
@@ -31,29 +40,21 @@ const ClassCard = ({ classItem }) => {
     } else {
       const classInfo = {
         email: user?.email,
-        image: choseClass.image,
-        name: choseClass.name,
-        price: choseClass.price,
-        id: choseClass._id,
-        instructor: choseClass.instructorName,
+        image: choseClass?.image,
+        name: choseClass?.name,
+        price: choseClass?.price,
+        id: choseClass?._id,
+        instructor: choseClass?.instructor,
         availableSeats,
         inrolledStudent,
       };
       setLoading(true);
-      fetch('http://localhost:5000/selectedClasses', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(classInfo),
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.insertedId) {
-            toast.success('Added To Your Selected Page');
-            setLoading(false);
-          }
-        });
+      axiosSecuire.post('/selectedClasses', classInfo).then(data => {
+        if (data.data.insertedId) {
+          toast.success('Added To Your Selected Page');
+          setLoading(false);
+        }
+      });
     }
   };
   return (
@@ -81,10 +82,18 @@ const ClassCard = ({ classItem }) => {
 
         <div className="text-center">
           <button
-            disabled={availableSeats === 0 || loading || isAdmin}
+            disabled={
+              availableSeats === 0 ||
+              loading ||
+              isAdmin ||
+              user?.email === email
+            }
             onClick={() => handlerSelectClass(classItem)}
             className={` absolute bottom-[6px] left-[6px]  w-[95%] mx-auto ${
-              availableSeats === 0
+              availableSeats === 0 ||
+              loading ||
+              isAdmin ||
+              user?.email === email
                 ? 'bg-gray-400 px-8 py-2 rounded-md'
                 : 'coustom-btn'
             }`}

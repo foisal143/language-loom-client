@@ -2,6 +2,7 @@ import { FaAmazonPay, FaRegTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const SelectClassRow = ({ item, i, handlerDelete }) => {
   const { name, price, instructor, image, _id } = item;
+  console.log(instructor);
   return (
     <tr>
       <th>{i + 1}</th>

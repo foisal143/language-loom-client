@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Container from '../../../components/Container/Container';
 import ClassCard from '../../../components/ClassCard/ClassCard';
 import { Link } from 'react-router-dom';
 
 import Heading from '../../../components/Heading/Heading';
+import { ThemeContext } from '../../../ThemeProvaider/ThemeProvaider';
 const PopularClasses = () => {
   const [popularClass, setPopularClass] = useState([]);
-
+  const { isDark } = useContext(ThemeContext);
   // // handler for select the classes
   // const handlerSelectClass = id => {
   //   if (!user) {

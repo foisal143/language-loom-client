@@ -1,16 +1,16 @@
 import { useContext } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Authprovaider/Authprovaider';
 import './Navbar.css';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
+import { ThemeContext } from '../../../ThemeProvaider/ThemeProvaider';
 
 const Navbar = () => {
   const isAdmin = useAdmin();
   const isInstructor = useInstructor();
   const { logout, user } = useContext(AuthContext);
-
-  console.log(isAdmin, isInstructor);
+  const { isDark, setIsdark } = useContext(ThemeContext);
 
   const links = (
     <>
@@ -44,8 +44,20 @@ const Navbar = () => {
   const handlerLogout = () => {
     logout().then().catch();
   };
+
+  // handler theme change
+  const handlerThemeChange = e => {
+    const themeValue = e.target.checked;
+    localStorage.setItem('theme', themeValue);
+    setIsdark(themeValue);
+  };
+  console.log(isDark);
   return (
-    <div className="navbar bg-white shadow-md sticky top-0  w-full z-10 lg:px-12">
+    <div
+      className={`navbar  shadow-md sticky top-0  w-full z-10 lg:px-12 ${
+        isDark ? 'bg-black text-white' : 'bg-white'
+      }`}
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -66,7 +78,9 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 ${
+              isDark ? 'bg-black' : 'bg-white'
+            }`}
           >
             {links}
           </ul>
@@ -83,6 +97,13 @@ const Navbar = () => {
       </div>
       {user && (
         <div className="navbar-end">
+          <input
+            onChange={handlerThemeChange}
+            type="checkbox"
+            className="toggle me-5"
+            defaultChecked={isDark}
+          />
+
           <div className="dropdown dropdown-end ">
             <div
               tabIndex={0}
@@ -95,7 +116,9 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 ${
+                isDark ? 'bg-black' : 'bg-white'
+              }`}
             >
               <li>
                 <a className="justify-between">

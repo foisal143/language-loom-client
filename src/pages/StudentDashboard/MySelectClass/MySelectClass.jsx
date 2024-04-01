@@ -3,10 +3,11 @@ import Container from '../../../components/Container/Container';
 import Heading from '../../../components/Heading/Heading';
 import SelectClassRow from '../../../components/SelectClassRow/SelectClassRow';
 import useSelectClass from '../../../hooks/useSelectClass';
+import useAxiosSeciure from '../../../hooks/useAxiosSeciure';
 
 const MySelectClass = () => {
   const [selectClass, refetch] = useSelectClass();
-
+  const axiosSecuire = useAxiosSeciure();
   // hander delete the selected class
   const handlerDelete = id => {
     Swal.fire({
@@ -19,20 +20,16 @@ const MySelectClass = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selectedClasses/${id}`, {
-          method: 'DELETE',
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data.deletedCount > 0) {
-              refetch();
-              Swal.fire({
-                title: 'Deleted!',
-                text: 'Your class has been deleted.',
-                icon: 'success',
-              });
-            }
-          });
+        axiosSecuire.delete(`/selectedClasses/${id}`).then(data => {
+          if (data.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your class has been deleted.',
+              icon: 'success',
+            });
+          }
+        });
       }
     });
   };
